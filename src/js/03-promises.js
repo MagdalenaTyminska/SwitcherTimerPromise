@@ -1,6 +1,7 @@
 import Notiflix from 'notiflix';
 
 const form = document.querySelector('form');
+const submitButton = document.querySelector('button[type=submit]');
 
 let promiseNumber = 0;
 let delayPromise = 0;
@@ -33,12 +34,17 @@ const btnHandler = event => {
   event.preventDefault();
   const delayValue = Number(form.elements.delay.value);
   const stepValue = Number(form.elements.step.value);
+  submitButton.disabled = true;
 
   for (let i = 0; i < form.elements.amount.value; i++) {
     promiseNumber++;
     delayPromise = delayValue + stepValue * i;
     notification(promiseNumber, delayPromise);
   }
+
+  setTimeout(() => {
+    submitButton.disabled = false;
+  }, delayPromise);
 
   promiseNumber = 0;
   delayPromise = 0;
