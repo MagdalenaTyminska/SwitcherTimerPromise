@@ -44,7 +44,7 @@ const btnHandler = event => {
 
   setTimeout(() => {
     submitButton.disabled = false;
-  }, delayPromise);
+  }, delayPromise * 1.3);
 
   promiseNumber = 0;
   delayPromise = 0;
